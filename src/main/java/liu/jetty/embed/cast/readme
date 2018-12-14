@@ -1,0 +1,31 @@
+一、案例说明：
+	1、案例采用java代码（Java Code）通过jetty API配置jetty服务器（Server）、服务器连接（ServerConnector）、
+		ServletContextHandler（拦截并处理htttp请求）。
+	2、案例通过上述配置最后启动jetty服务器。
+二、源代码文件（.java）介绍：
+	【AsyncEchoServlet.java】：POJO，一个HttpServlet，用于处理Web路径 "/echo/*"。
+	【HelloServlet.java】：POJO，一个HttpServlet，用于处理Web路径 "/hello"。
+	
+	【ExampleServer.java】：案例配置调试类。
+		1、直接在main方法中配置jetty服务器（Server）、服务器连接（ServerConnector）、ServletContextHandler（拦截并处理htttp请求）。
+		2、启动jetty服务器。
+三、知识点：
+	1、编写Java代码来直接实例化并配置Jetty对象，这称为嵌入式Jetty。
+	2、启动jetty嵌入式服务器后，可以通过如下地址进行访问：
+		http://localhost:8080/hello
+		http://localhost:8080/echo/*
+	3、Server实例：它是Jetty服务的重要组成部分，它为其它Jetty组件提供服务和生命周期管理。在标准的Jetty应用中，核心的配置信息在etc/jetty.xml文件中 ，
+	      但是你也可以在配置文件中添加其它配置 ，包括：
+		● ThreadPool(线程池)：服务器实例提供了一个默认ThreadPool实例，用来供其它组件调用。配置线程池的主要参数有最大和最小数量的设置，设置在start.ini文件或者start.d/server.ini文件中。
+		● Handlers：一个Jetty服务器可以只有一个处理程序实例来处理传入的HTTP请求。然而一个处理程序可能是一个容器或包装其他处理程序形成一个树的处理程序。在etc/jetty.xml文件中配置的默认的处理程序
+		     包含处理程序集合和一个默认的处理程序，根据路径找到相应的处理程序，默认的处理器处理404错误。其他配置信息可以增加到处理树中（例如，jetty-rewrite.xml, jetty-requestlog.xml），
+		      或者配置一个组件用于热部署处理（例如，jetty-deploy.xml） 。
+		● Server Attributes：服务器可以通过字符串来映射到一个对象上，如果一个对象实现了LifeCycle接口，那么这个对象可以监听这个Jetty服务的启停。通常服务器的属性保存在服务器生命周期内。
+		● Server fields：服务器也有一些特殊的的配置属性，配置在start.ini或者start.d/server.ini文件中，除了控制属性外还有发送时间和http响应的版本。
+		● Connectors：服务器拥有一个连接的集合，用来接收http请求，和其它Jetty支持的协议请求，下一章节将要介绍配置连接。对于服务器可以设置所有的连接也可以增加或者删除个别连接。
+		● Services：服务器能容纳额外的服务对象，有时作为属性，但经常做为有生命周期的bean。
+	4、HandlerCollection：一个包含多个处理器的集合，按照顺序依次处理。这在响应请求的同时进行统计和日志记录特别有用。
+	5、HandlerList：一个包含多个处理器的集合，按照顺序处理，与HandlerCollection不同的是，当处理器出现异常或者响应被提交者request.isHandled()方法返回true时，
+		后续将不再被调用。一般用来匹配不同的主机，用来进行不同的处理。
+	6、HandlerWrapper：一个处理器的基类用来进行切面编程。例如，一个标准的web应用会由context，session，安全和servlet处理器构成。
+	7、ContextHandlerCollection：一个特殊的HandlerCollection，使用完整的URI前缀来选择匹配的ContextHandler对请求进行处理。

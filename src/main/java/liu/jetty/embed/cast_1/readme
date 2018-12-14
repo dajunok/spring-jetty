@@ -1,0 +1,15 @@
+一、案例说明：
+	1、使用处理器处理请求
+二、源代码文件（.java）介绍：
+三、知识点：
+	1、Handler（处理器）：为了针对请求产生一个相应，Jetty要求用户为服务创建一个处理请求的处理器，一个处理器可以做的工作有：
+		● 检测或修改一个请求
+		● 一个完整的HTTP响应
+		● 处理转发（详见：HandlerWrapper）
+		● 处理转发到多个其它处理器上（详见：HandlerCollection）
+	2、Handler（处理器）构造器参数：
+		● target - 目标请求，可以是一个URI或者是一个转发到这的处理器的名字
+		● baseRequest  - Jetty自己的没有被包装的请求，一个可变的Jetty请求对象
+		● request  - 被filter或者servlet包装的请求，一个不可变的Jetty请求对象
+		● response  - 响应，可能被filter或者servlet包装过
+	       处理程序会设置状态码，content-type，并调用write向response输出内容。
