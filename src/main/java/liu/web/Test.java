@@ -13,6 +13,4 @@ public class Test {
 		MockMvc mockMvc=MockMvcBuilders.standaloneSetup(controller).build();
 		mockMvc.perform(get("/")).andExpect(view().name("home"));		
 	}
-	
-
 }

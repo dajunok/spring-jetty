@@ -1,4 +1,4 @@
-package liu.jetty.embed.cast;
+package liu.jetty.embed.cast_1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,7 +15,7 @@ public class HelloHandler extends AbstractHandler {
     final String body;
     
     public HelloHandler() {
-		this("Hello World!!"); //调用构造器：HelloHandler( String greeting )
+		this("Hello World! My HelloHandler."); //调用构造器：HelloHandler( String greeting )
 	}
     
     public HelloHandler( String greeting )
@@ -30,12 +30,14 @@ public class HelloHandler extends AbstractHandler {
     }
 
 	@Override
-	public void handle(String target, 
-					   Request baseRequest, 
-					   HttpServletRequest request, 
-					   HttpServletResponse response)
+	public void handle(String target,  //目标请求，可以是一个URI或者是一个转发到这的处理器的名字
+					   Request baseRequest,  //Jetty自己的没有被包装的请求，一个可变的Jetty请求对象
+					   HttpServletRequest request,  //被filter或者servlet包装的请求，一个不可变的Jetty请求对象
+					   HttpServletResponse response)  //响应，可能被filter或者servlet包装过
 			throws IOException, ServletException {
-		response.setContentType("text/html; charset=utf-8");
+		// 声明response的编码和文件类型
+		response.setContentType("text/html; charset=utf-8");		
+		// 声明返回状态码
         response.setStatus(HttpServletResponse.SC_OK);
 
         PrintWriter out = response.getWriter();
