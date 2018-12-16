@@ -1,0 +1,6 @@
+一、案例说明：
+	1、案例使用了Jetty自带的ResourceHandler类来处理所有的请求，这个类指定了资源路径，并且允许列出目录和文件，
+	       这里需要注意的是“resourceHandler.setStylesheet("");”，如果没有这一行代码的话，在请求资源的时候后台总是会不停的抛出NullPointerException。
+	       运行FileServer类，访问http://localhost:8080/就可以看到“E:/share”下的所有文件和目录了。
+二、源代码文件（.java）介绍：
+三、知识点：

@@ -19,7 +19,7 @@ public class FileServer {
         ResourceHandler resource_handler = new ResourceHandler();
         //配置ResourceHandler，设置哪个文件应该被提供给请求方
         //这个例子里，配置的是当前路径下的文件，但是实际上可以配置长任何jvm能访问到的地方
-        resource_handler.setDirectoriesListed(true);
+        resource_handler.setDirectoriesListed(true);  //允许列出目录和文件
         resource_handler.setWelcomeFiles(new String[] { "index.html" });
         resource_handler.setResourceBase(".");
 
