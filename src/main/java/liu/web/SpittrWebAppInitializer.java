@@ -1,4 +1,4 @@
-package liu.web;
+ package liu.web;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

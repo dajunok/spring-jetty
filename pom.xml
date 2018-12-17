@@ -17,6 +17,12 @@
 	<logback.version>1.2.3</logback.version>
 	<jetty.version>9.4.14.v20181114</jetty.version> <!--9.3.25.v20180904  9.4.14.v20181114-->
 	<jackson.version>2.9.7</jackson.version>
+	<jstl.version>1.2</jstl.version>
+	<jsp-api.version>2.2.1-b03</jsp-api.version>
+	<validation.version>2.0.0.CR3</validation.version>
+	<hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+	<mockito-all.version>2.0.2-beta</mockito-all.version>
+	<hamcrest.version>1.3</hamcrest.version>
   </properties> 
   
   <dependencies>
@@ -51,6 +57,34 @@
 	    <version>4.0.1</version>
 	    <scope>provided</scope>
 	</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+	<dependency>
+	    <groupId>javax.validation</groupId>
+	    <artifactId>validation-api</artifactId>
+	    <version>${validation.version}</version>
+	</dependency>	
+	
+				<!-- JSP -->
+	<!--JSP标签库  https://mvnrepository.com/artifact/javax.servlet/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>${jstl.version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+	<dependency>
+	    <groupId>javax.servlet.jsp</groupId>
+	    <artifactId>jsp-api</artifactId>
+	    <version>${jsp-api.version}</version>
+	    <scope>provided</scope>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/taglibs/standard 
+	<dependency>
+	    <groupId>taglibs</groupId>
+	    <artifactId>standard</artifactId>
+	    <version>1.1.2</version>
+	</dependency>-->	
+		
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
@@ -113,15 +147,39 @@
 		<groupId>com.fasterxml.jackson.core</groupId>
 		<artifactId>jackson-databind</artifactId>
 		<version>${jackson.version}</version>
-	</dependency>
-    
-	       
+	</dependency>	       
 		
 	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 	<dependency>
 	    <groupId>org.apache.commons</groupId>
 	    <artifactId>commons-lang3</artifactId>
 	    <version>3.8</version>
+	</dependency>
+	
+	<!-- 调试时依赖 -->
+	<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-all</artifactId>
+	    <version>${mockito-all.version}</version>
+	    <!--<scope>test</scope>-->
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+	<dependency>
+	    <groupId>org.hamcrest</groupId>
+	    <artifactId>hamcrest-all</artifactId>
+	    <version>${hamcrest.version}</version>
+	    <!--<scope>test</scope>-->
+	</dependency>
+	
+	
+	
+	<!--ORM 数据库映射 -->
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-validator</artifactId>
+	    <version>${hibernate-validator.version}</version>
 	</dependency>
   </dependencies>
   <build>
