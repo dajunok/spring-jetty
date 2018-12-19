@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +24,7 @@ public class SpittleControllerTest {
         .thenReturn(expectedSpittles);
 
     SpittleController controller = new SpittleController(mockRepository);
-    MockMvc mockMvc = standaloneSetup(controller)
+    MockMvc mockMvc = standaloneSetup(controller) 
         .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
         .build();
 
